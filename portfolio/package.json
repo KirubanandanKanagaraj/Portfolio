@@ -15,7 +15,7 @@
   "description": "Personal Portfolio",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "4.5.0"
+    "bootstrap": "5.0.0"
   },
   "devDependencies": {
     "autoprefixer": "9.8.0",
