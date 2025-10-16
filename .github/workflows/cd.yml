@@ -4,10 +4,15 @@ on:
   push:
     branches: [master]
 
+# Required for GitHub Pages deployment
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    needs: []
 
     steps:
       - name: Checkout code
@@ -33,6 +38,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 
+      # Alternative: Deploy to Vercel (commented out)
       # - name: Deploy to Vercel
       #   uses: amondnet/vercel-action@v25
       #   with:
@@ -41,7 +47,7 @@ jobs:
       #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
       #     vercel-args: '--prod'
 
-      # Alternative: Deploy to Netlify
+      # Alternative: Deploy to Netlify (commented out)
       # - name: Deploy to Netlify
       #   uses: nwtgck/actions-netlify@v2
       #   with:
@@ -50,13 +56,6 @@ jobs:
       #   env:
       #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      # Alternative: Deploy to GitHub Pages
-      # - name: Deploy to GitHub Pages
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./dist
 
       - name: Send deployment notification
         if: success()
