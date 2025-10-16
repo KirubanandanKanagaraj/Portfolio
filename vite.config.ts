@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/Portfolio/', // Change to '/repository-name/' if not using custom domain
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
